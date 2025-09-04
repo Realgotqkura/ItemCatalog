@@ -1,6 +1,7 @@
 package org.realgotqkura.itemCatalog;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.realgotqkura.itemCatalog.commands.DebugCommand;
 import org.realgotqkura.itemCatalog.commands.GuiCommand;
 import org.realgotqkura.itemCatalog.commands.tabcompleters.DebugCmdTabComp;
@@ -10,6 +11,7 @@ import org.realgotqkura.itemCatalog.guis.InitialGUI;
 import org.realgotqkura.itemCatalog.guis.MiscItemsGUI;
 import org.realgotqkura.itemCatalog.items.ItemsManager;
 import org.realgotqkura.itemCatalog.utilities.RandomUtils;
+import org.realgotqkura.itemCatalog.utilities.data.DataUtils;
 import org.realgotqkura.itemCatalog.utilities.data.PlayerDataConfig;
 import org.realgotqkura.itemCatalog.utilities.logger.GLogger;
 import org.realgotqkura.itemCatalog.utilities.logger.GLoggerSeverity;
@@ -26,8 +28,21 @@ public final class ItemCatalog extends JavaPlugin {
         playerData = new PlayerDataConfig(this);
 
         RandomUtils.loadNskContainer(this);
-        ItemsManager.loadItems();
-        ItemsManager.loadItemEvents(this);
+
+
+        new BukkitRunnable(){
+
+            @Override
+            public void run() {
+                ItemsManager.loadItems();
+                ItemsManager.loadItemEvents(instance);
+                ItemsManager.loadRunnables(instance);
+                cancel();
+            }
+        }.runTaskLater(this, 1);
+
+        DataUtils utils = new DataUtils();
+        utils.loadCustomData(this);
 
         registerGuiEvents();
         registerCommands();

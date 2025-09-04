@@ -1,14 +1,18 @@
 package org.realgotqkura.itemCatalog.utilities;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.persistence.PersistentDataType;
 import org.realgotqkura.itemCatalog.ItemCatalog;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
@@ -62,12 +66,27 @@ public class RandomUtils {
             double currentTime = System.currentTimeMillis() / 1000.0; // Convert to seconds
 
             if (currentTime - lastUse < cooldownSeconds) {
-                player.sendMessage(RandomUtils.color("&cAbility Still in cooldown!"));
+                int timeLeft = (int) (cooldownSeconds - (currentTime - lastUse));
+                player.sendMessage(RandomUtils.color("&cAbility Still has " + timeLeft + "s left of the cooldown!"));
                 return false;
             }
         }
 
         cooldowns.put(player.getUniqueId(), System.currentTimeMillis() / 1000.0);
         return true;
+    }
+
+    public static ItemStack getSmeltingResult(ItemStack stack) {
+        Iterator<Recipe> it = Bukkit.recipeIterator();
+        while (it.hasNext()) {
+            Recipe recipe = it.next();
+
+            if (recipe instanceof FurnaceRecipe furnaceRecipe) {
+                if (furnaceRecipe.getInputChoice().test(stack)) {
+                    return furnaceRecipe.getResult().clone(); // return the smelted item
+                }
+            }
+        }
+        return null; // no smelting recipe found
     }
 }
