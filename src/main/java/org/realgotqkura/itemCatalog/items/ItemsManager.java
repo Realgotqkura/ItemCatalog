@@ -14,6 +14,8 @@ import java.util.List;
 
 public class ItemsManager {
 
+    public static int ITEM_COUNT;
+
     public static List<ItemStack> combatItems = new ArrayList<>();
     public static List<ItemStack> miscItems = new ArrayList<>();
     public static List<ItemStack> allItems = new ArrayList<>();
@@ -25,6 +27,7 @@ public class ItemsManager {
         allItems.addAll(miscItems);
 
         allItems.sort(ItemStackComparators.BY_DISPLAY_NAME);
+        ITEM_COUNT = allItems.size();
     }
 
     public static void loadRunnables(ItemCatalog plugin){
@@ -77,10 +80,13 @@ public class ItemsManager {
         miscItems.add(WindlashWhip.item());
         miscItems.add(CursedCoin.item());
         miscItems.add(SpiritLantern.item());
+        miscItems.add(SiphonGauntlet.item());
+        miscItems.add(PhoenixFeather.item());
     }
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new PhoenixFeather(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new CursedCoin(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new EchoBlade(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new TempestTrident(plugin), plugin);

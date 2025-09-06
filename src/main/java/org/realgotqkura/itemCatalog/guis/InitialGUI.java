@@ -37,6 +37,7 @@ public class InitialGUI implements Listener {
         sorting.getOuter(inv, false);
         sorting.getInner(inv);
         sorting.corners(inv, sorting.getItems().cornerItems(true));
+        inv.setItem(4, itemCount());
         inv.setItem(20, combatItems());
         inv.setItem(22, miscItems());
         inv.setItem(24, allItems());
@@ -74,6 +75,20 @@ public class InitialGUI implements Listener {
             gui.createStartInv(player);
         }
 
+    }
+
+    public ItemStack itemCount(){
+        ItemStack stack = new ItemStack(Material.DIAMOND);
+        ItemMeta meta = stack.getItemMeta();
+        meta.setDisplayName(RandomUtils.color("&e&kEE &b&lTOTAL ITEM COUNT &e&kEE"));
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add(RandomUtils.color("&7Current Items: &a" + ItemsManager.ITEM_COUNT));
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.DEPTH_STRIDER,1,true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        stack.setItemMeta(meta);
+        return stack;
     }
 
 

@@ -40,7 +40,7 @@ public class EnderSword implements Listener {
 
 
     public static ItemStack item(){
-        ItemStack stack = new ItemStack(Material.SHIELD);
+        ItemStack stack = new ItemStack(Material.IRON_SWORD);
         ItemMeta meta = stack.getItemMeta();
         meta.setDisplayName(RandomUtils.safeHexColor("#fcfb95", "Ender Sword"));
         List<String> lore = new ArrayList<>();

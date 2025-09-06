@@ -28,6 +28,7 @@ public class DataUtils {
         checkIntIfNull(plugin, "customModelData.windlashWhip", 39);
         checkIntIfNull(plugin, "customModelData.cursedCoin", 40);
         checkIntIfNull(plugin, "customModelData.spiritLantern", 41);
+        checkIntIfNull(plugin, "customModelData.phoenixFeather", 42);
     }
 
     private static void checkIntIfNull(ItemCatalog plugin, String configLine, int defaultValue) {
