@@ -29,6 +29,9 @@ public class DataUtils {
         checkIntIfNull(plugin, "customModelData.cursedCoin", 40);
         checkIntIfNull(plugin, "customModelData.spiritLantern", 41);
         checkIntIfNull(plugin, "customModelData.phoenixFeather", 42);
+        checkIntIfNull(plugin, "customModelData.soulDagger", 43);
+        checkIntIfNull(plugin, "customModelData.tempestBoots", 44);
+        checkIntIfNull(plugin, "customModelData.abyssalHarpoon", 45);
     }
 
     private static void checkIntIfNull(ItemCatalog plugin, String configLine, int defaultValue) {

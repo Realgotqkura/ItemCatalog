@@ -56,6 +56,7 @@ public class ItemsManager {
         combatItems.add(GlacialBow.item());
         combatItems.add(FrostHammer.item());
         combatItems.add(ChainLightningStaff.item());
+        combatItems.add(SoulDagger.item());
     }
 
     private static void loadMiscItems(){
@@ -82,10 +83,15 @@ public class ItemsManager {
         miscItems.add(SpiritLantern.item());
         miscItems.add(SiphonGauntlet.item());
         miscItems.add(PhoenixFeather.item());
+        miscItems.add(TempestBoots.item());
+        miscItems.add(AbyssalHarpoon.item());
     }
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new AbyssalHarpoon(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new TempestBoots(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new SoulDagger(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PhoenixFeather(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new CursedCoin(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new EchoBlade(plugin), plugin);
