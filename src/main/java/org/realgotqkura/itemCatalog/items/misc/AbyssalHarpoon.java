@@ -69,6 +69,8 @@ public class AbyssalHarpoon implements Listener {
         if (!RandomUtils.passedItemChecks(player.getInventory().getItemInMainHand(), "AbyssalHarpoon"))
             return;
 
+        event.setCancelled(true);
+
         int cooldown = 12;
         if(!RandomUtils.checkCooldown(player, cooldown, cooldowns))
             return;

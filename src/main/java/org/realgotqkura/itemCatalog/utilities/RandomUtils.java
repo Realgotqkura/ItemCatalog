@@ -76,6 +76,20 @@ public class RandomUtils {
         return true;
     }
 
+    public static boolean checkCooldownNoSpam(Player player, double cooldownSeconds, Map<UUID, Double> cooldowns) {
+        if (cooldowns.containsKey(player.getUniqueId())) {
+            double lastUse = cooldowns.get(player.getUniqueId());
+            double currentTime = System.currentTimeMillis() / 1000.0; // Convert to seconds
+
+            if (currentTime - lastUse < cooldownSeconds) {
+                return false;
+            }
+        }
+
+        cooldowns.put(player.getUniqueId(), System.currentTimeMillis() / 1000.0);
+        return true;
+    }
+
     public static ItemStack getSmeltingResult(ItemStack stack) {
         Iterator<Recipe> it = Bukkit.recipeIterator();
         while (it.hasNext()) {

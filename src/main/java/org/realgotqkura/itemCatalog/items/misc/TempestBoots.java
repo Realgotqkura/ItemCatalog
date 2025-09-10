@@ -68,13 +68,13 @@ public class TempestBoots implements Listener {
     public void onSprintJump(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-        if (!RandomUtils.passedItemChecks(player.getInventory().getBoots(), "TempestBoots"))
+        if (!RandomUtils.passedItemChecks(player.getEquipment().getBoots(), "TempestBoots"))
             return;
 
         // Detect a jump: Y position increases + player is sprinting + on ground before jump
-        if (event.getFrom().getY() < event.getTo().getY() && player.isSprinting() && player.isOnGround()) {
+        if (event.getFrom().getY() < event.getTo().getY() && player.isSprinting()) {
             int cooldown = 10;
-            if (!RandomUtils.checkCooldown(player, cooldown, cooldowns))
+            if (!RandomUtils.checkCooldownNoSpam(player, cooldown, cooldowns))
                 return;
 
             // Launch upward slightly stronger than normal jump
