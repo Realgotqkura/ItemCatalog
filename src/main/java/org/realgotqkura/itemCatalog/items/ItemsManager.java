@@ -25,7 +25,6 @@ public class ItemsManager {
         loadMiscItems();
         allItems.addAll(combatItems);
         allItems.addAll(miscItems);
-
         allItems.sort(ItemStackComparators.BY_DISPLAY_NAME);
         ITEM_COUNT = allItems.size();
     }
@@ -58,6 +57,8 @@ public class ItemsManager {
         combatItems.add(ChainLightningStaff.item());
         combatItems.add(SoulDagger.item());
         combatItems.add(LuminaraSpear.item());
+        combatItems.add(ObsidianMace.item());
+        combatItems.add(SpectralKatana.item());
     }
 
     private static void loadMiscItems(){
@@ -90,6 +91,8 @@ public class ItemsManager {
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new SpectralKatana(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new ObsidianMace(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new LuminaraSpear(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new AbyssalHarpoon(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new TempestBoots(plugin), plugin);
