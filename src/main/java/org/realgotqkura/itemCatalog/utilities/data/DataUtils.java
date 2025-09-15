@@ -35,6 +35,7 @@ public class DataUtils {
         checkIntIfNull(plugin, "customModelData.luminaraSpear", 46);
         checkIntIfNull(plugin, "customModelData.obsidianMace", 47);
         checkIntIfNull(plugin, "customModelData.spectralKatana", 48);
+        checkIntIfNull(plugin, "customModelData.soulReaperAxe", 49);
     }
 
     private static void checkIntIfNull(ItemCatalog plugin, String configLine, int defaultValue) {
