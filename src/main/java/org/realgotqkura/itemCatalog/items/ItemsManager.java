@@ -60,6 +60,8 @@ public class ItemsManager {
         combatItems.add(ObsidianMace.item());
         combatItems.add(SpectralKatana.item());
         combatItems.add(SoulReaperAxe.item());
+        combatItems.add(VoidBow.item());
+        combatItems.add(HomingCrossbow.item());
     }
 
     private static void loadMiscItems(){
@@ -92,6 +94,8 @@ public class ItemsManager {
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new HomingCrossbow(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new VoidBow(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new SoulReaperAxe(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new SpectralKatana(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new ObsidianMace(plugin), plugin);

@@ -22,6 +22,7 @@ public class RandomUtils {
 
     public static void loadNskContainer(ItemCatalog plugin){
         nskContainer.put("ItemCatalogID", new NamespacedKey(plugin, "item_catalog_id"));
+        nskContainer.put("VoidBowArrow", new NamespacedKey(plugin, "void_bow_arrow"));
     }
 
     public static String color(String s){
