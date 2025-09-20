@@ -80,7 +80,7 @@ public class HomingCrossbow implements Listener {
                 if (target == null) return;
 
                 Vector direction = target.getLocation().add(0, 1, 0).toVector().subtract(arrow.getLocation().toVector()).normalize();
-                Vector velocity = arrow.getVelocity().multiply(0.9).add(direction.multiply(0.3)).normalize().multiply(arrow.getVelocity().length());
+                Vector velocity = arrow.getVelocity().multiply(0.9).add(direction.multiply(2)).normalize().multiply(arrow.getVelocity().length());
 
                 arrow.setVelocity(velocity);
                 arrow.getWorld().spawnParticle(Particle.END_ROD, arrow.getLocation(), 2, 0.05, 0.05, 0.05, 0);

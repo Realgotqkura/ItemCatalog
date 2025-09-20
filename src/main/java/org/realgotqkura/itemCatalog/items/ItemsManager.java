@@ -62,6 +62,7 @@ public class ItemsManager {
         combatItems.add(SoulReaperAxe.item());
         combatItems.add(VoidBow.item());
         combatItems.add(HomingCrossbow.item());
+        combatItems.add(TitanChestplate.item());
     }
 
     private static void loadMiscItems(){
@@ -90,10 +91,15 @@ public class ItemsManager {
         miscItems.add(PhoenixFeather.item());
         miscItems.add(TempestBoots.item());
         miscItems.add(AbyssalHarpoon.item());
+        miscItems.add(EtherealHelm.item());
+        miscItems.add(PhantomLeggings.item());
     }
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new PhantomLeggings(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new TitanChestplate(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new EtherealHelm(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new HomingCrossbow(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new VoidBow(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new SoulReaperAxe(plugin), plugin);
