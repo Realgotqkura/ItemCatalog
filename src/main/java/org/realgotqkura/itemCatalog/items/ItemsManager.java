@@ -64,6 +64,7 @@ public class ItemsManager {
         combatItems.add(HomingCrossbow.item());
         combatItems.add(TitanChestplate.item());
         combatItems.add(StormCloak.item());
+        combatItems.add(IronbackHelm.item());
     }
 
     private static void loadMiscItems(){
@@ -98,6 +99,7 @@ public class ItemsManager {
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new IronbackHelm(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new StormCloak(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PhantomLeggings(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new TitanChestplate(plugin), plugin);

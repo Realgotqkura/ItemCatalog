@@ -42,6 +42,7 @@ public class DataUtils {
         checkIntIfNull(plugin, "customModelData.titanChestplate", 53);
         checkIntIfNull(plugin, "customModelData.phantomLeggings", 54);
         checkIntIfNull(plugin, "customModelData.stormCloak", 55);
+        checkIntIfNull(plugin, "customModelData.ironbackHelm", 56);
     }
 
     private static void checkIntIfNull(ItemCatalog plugin, String configLine, int defaultValue) {
