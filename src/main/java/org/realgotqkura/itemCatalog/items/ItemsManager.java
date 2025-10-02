@@ -96,10 +96,12 @@ public class ItemsManager {
         miscItems.add(EtherealHelm.item());
         miscItems.add(PhantomLeggings.item());
         miscItems.add(SpectralMask.item());
+        miscItems.add(AetherRobe.item());
     }
 
 
     public static void loadItemEvents(ItemCatalog plugin){
+        plugin.getServer().getPluginManager().registerEvents(new AetherRobe(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new SpectralMask(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new IronbackHelm(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new StormCloak(plugin), plugin);
